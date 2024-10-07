@@ -85,7 +85,7 @@ int parse(int *current_token) {
 }
 
 int main() {
-    const char *code = "x = 2 + (3 * 4)";
+    const char *code = "b = (1 + 2) * (3 - 1)";
     lexer(code);
     for (int i = 0; i < index_token; i++) {
         if (tokens[i].type == token_int) {
@@ -93,19 +93,19 @@ int main() {
         } else if (tokens[i].type == token_var) {
             printf("Token: var, name: %c\n", tokens[i].var_name);
         } else if (tokens[i].type == token_plus) {
-            printf("Token: PLUS\n");
+            printf("Token: + \n");
         }
         else if (tokens[i].type == token_min) {
-            printf("Token: minus\n");
+            printf("Token: -\n");
         }
         else if (tokens[i].type == token_mul) {
-            printf("Token: mul\n");
+            printf("Token: * \n");
         } else if (tokens[i].type == token_div) {
-            printf("Token : div\n");
+            printf("Token : / \n");
         } else if (tokens[i].type == token_paren1) {
-            printf("Token: paren L\n");
+            printf("Token: ( \n");
         } else if (tokens[i].type == token_paren2) {
-            printf("Token: pren R\n");
+            printf("Token:  )\n");
         } else if (tokens[i].type == token_end) {
             printf("Token: end\n");
         }
