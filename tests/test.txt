@@ -1,0 +1,8 @@
+print("Hello World!")
+x = 10
+print(x)
+use_local
+x = 20
+print(x)
+use_global
+print(x)

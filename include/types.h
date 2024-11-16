@@ -12,6 +12,7 @@ typedef enum {
     token_paren2,
     token_equal,
     token_end,
+    token_string,
     //token_print
 
 } TokenType;
@@ -24,4 +25,8 @@ typedef struct {
     int value;
 } Token;
 
+extern Token tokens[100];
+extern int index_token;
+extern char string_storage[100][256]; // Déclaration de la variable globale
+extern int string_count;
 #endif

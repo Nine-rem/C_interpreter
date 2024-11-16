@@ -1,13 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
 #include "parser.h"
 #include "lexer.h"
 #include "eval.h"
 #include "symbol_table.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "scope.h"
 
-extern Token tokens[100];
-extern int index_token;
 
+
+Token tokens[100];
+int index_token;
+
+char string_storage[100][256]; // Déclaration de la variable globale
+int string_count;
 ASTNode* parse_factor() {
     if (tokens[index_token].type == token_int) {
         int value = tokens[index_token].value;
@@ -54,13 +61,14 @@ ASTNode* parse_expression() {
     return node;
 }
 
-ASTNode* parse_assignment() {
+ASTNode* parse_assignment(Scope *scope) {
+
     if (tokens[index_token].type == token_var && tokens[index_token + 1].type == token_equal) {
         char var_name = tokens[index_token].var_name;
         index_token += 2;
         ASTNode* expr = parse_expression();
         int value = eval_expression(expr);
-        set_variable_value(var_name, value);
+        set_variable(scope,var_name, value);
         return create_node(token_var, NULL, NULL, 0, var_name);
     }
     return parse_expression();
@@ -68,22 +76,33 @@ ASTNode* parse_assignment() {
 
 
 // Gestion de la commande print
-void print() {
+void print(Scope *scope) {
     if (tokens[index_token].type == token_paren1) {
         index_token++;
-        if (tokens[index_token].type == token_var) {
+        if (tokens[index_token].type == token_var) { // Gestion des variable
             char var_name = tokens[index_token].var_name;
             index_token++;
-            if (tokens[index_token].type == token_paren2) {
+            if (tokens[index_token].type == token_paren2) { // Parenthese fermante
                 index_token++;
-                printf("%d\n", get_variable_value(var_name));
+                printf("%d\n",get_variable(scope, var_name));
             } else {
-                printf("Erreur: parenthèse fermante manquante\n");
+                printf("Erreur: parenthèse fermante manquante pour la variable\n");
+            }
+        } else if (tokens[index_token].type == token_string) { // Gestion des chaînes
+            int string_id = tokens[index_token].value; // Récupérer l'index
+            index_token++ ;
+            if ( tokens[index_token].type == token_paren2) { // Parenthèse fermante
+                 index_token++;
+                printf("%s\n", string_storage[string_id]); // Affiche la chaîne
+            } else {
+
+                printf("Erreur: parenthèse fermante manquante pour la chaîne\n");
             }
         } else {
-            printf("Erreur: print() nécessite une variable valide\n");
+            printf("Erreur: print() nécessite une variable ou une chaîne valide\n");
         }
     } else {
         printf("Erreur: parenthèse ouvrante manquante\n");
     }
 }
+
