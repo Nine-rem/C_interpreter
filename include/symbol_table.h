@@ -7,7 +7,7 @@ typedef struct {
 } Symbol;
 
 
-void set_variable_value(char var_name, int value);
+void set_variable_value(char  var_name, int value);
 
 int get_variable_value(char var_name);
 

@@ -12,6 +12,7 @@
 
 void free_ast(ASTNode* node) {
     if (!node) return;
+
     free_ast(node->left);
     free_ast(node->right);
     free(node);
@@ -42,9 +43,9 @@ void interpret(const char* input, Scope* scope) {
         // Analyse de l'expression ou de l'affectation
         ASTNode* root = parse_assignment(scope);
         if (root->type == token_var) {
-            printf("Variable '%c' = %d\n", root->var_name, get_variable(scope, root->var_name));
+         //   printf("Variable '%c' = %d\n", root->var_name, get_variable(scope, root->var_name));
         } else {
-            double result = eval_expression(root);
+            double result = eval_expression(root,scope);
             printf("Résultat: %lf\n", result);
         }
         free_ast(root);
@@ -77,9 +78,11 @@ int main() {
     Scope scope;
     init_scope(&scope);
 
-    printf("Bienvenue dans l'interpréteur\n");
-    printf("Tapez 'exit' pour quitter, 'use_local' ou 'use_global' pour changer de portée.\n");
-    printf("Tapez 'file:<nom_du_fichier>' pour exécuter un fichier.\n");
+    printf("Bienvenue dans l\'interpreteur\n");
+    printf("Entrez une expression.\n");
+    printf("Entrez 'file:<nom_du_fichier>' pour excuter un fichier.\n");
+
+    printf("Entrez 'exit' pour quitter, 'use_local' ou 'use_global' pour changer de portee.\n");
 
     char input[256]; // Entrée utilisateur
 
