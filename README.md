@@ -1,4 +1,4 @@
-<img width="402" alt="image" src="https://github.com/user-attachments/assets/da654c75-9e4b-4f6d-8e2c-ec76466c8dbb"><h1>Création d’un Interpréteur de Langage de Programmation</h1>
+<h1>Création d’un Interpréteur de Langage de Programmation</h1>
 
 <h3>Description :</h3>
 
