@@ -18,7 +18,7 @@
 <p>- use_global : Revient à la portée globale<br></p>
 
 <h3>Structure des Fichiers</h3>
-<p>
+
 .
 ├── src/                     
 │   ├── main.c               # entrée principal
@@ -40,7 +40,7 @@
 │   ├── test.txt             
 ├── makefile                 # automatisation de la compilation
 └── README.md                # documentation du projet
- </p>
+ 
 
 <h3>Installation </h3>
 
