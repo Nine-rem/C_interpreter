@@ -1,4 +1,4 @@
-<h1>Création d’un Interpréteur de Langage de Programmation</h1>
+<img width="402" alt="image" src="https://github.com/user-attachments/assets/da654c75-9e4b-4f6d-8e2c-ec76466c8dbb"><h1>Création d’un Interpréteur de Langage de Programmation</h1>
 
 <h3>Description :</h3>
 
@@ -19,6 +19,7 @@
 
 <h3>Structure des Fichiers</h3>
 
+<img width="402" alt="image" src="https://github.com/user-attachments/assets/b2b64434-2cb1-4e20-83f4-c16c122bc8d4">
 
 
 <h3>Installation </h3>
