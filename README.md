@@ -17,6 +17,12 @@
 <p>- use_local : Active la portée locale<br></p>
 <p>- use_global : Revient à la portée globale<br></p>
 
+Lexer
+Rôle : Convertir l'entrée utilisateur en une séquence de tokens.
+Fonctions clés :
+addToken : Ajoute un token à la liste des tokens générés.
+lexer : Parcourt l'entrée caractère par caractère pour identifier les unités lexicales (par exemple, variables, opérateurs, mots-clés comme while).
+
 <h3>Structure des Fichiers</h3>
 
 <img width="402" alt="image" src="https://github.com/user-attachments/assets/b2b64434-2cb1-4e20-83f4-c16c122bc8d4">
